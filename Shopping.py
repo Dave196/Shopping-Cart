@@ -1,9 +1,28 @@
+def calculator(data):
+    pricing = {'A': {"unitPrice": 50, "specialPrice": True},
+               'B': {"unitPrice": 35, "specialPrice": True},
+               'C': {"unitPrice": 25, "specialPrice": False},
+               'D': {"unitPrice": 12, "specialPrice": False}
+               }
+    sub_total = 0
 
-Pricing = {'A': {"unitPrice": '50', "specialPrice": True},
-           'B': {"unitPrice": '50', "specialPrice": True},
-           'C': {"unitPrice": '50', "specialPrice": False},
-           'D': {"unitPrice": '50', "specialPrice": False}
-           }
+    for item in data:
+        # Standard subtotal calculation for each item
+        sub_total += item["quantity"] * pricing[item["code"]]["unitPrice"]
+        # Special Price check for item
+        if pricing[item["code"]]["specialPrice"]:
+            if item["code"] == 'A' and item["quantity"] >= 3:
+                # Floor division applied to attain the value to discount
+                sub_total -= (item["quantity"] // 3) * 10
+                print("Special price Discount for A applied!")
+            elif item["code"] == 'B' and item["quantity"] >= 2:
+                sub_total -= (item["quantity"] // 2) * 10
+                print("Special price Discount for B applied!")
+
+    final_output = "\nSUBTOTAL = £{}".format(str(sub_total))
+
+    return final_output
+
 
 Test_code = [{"code": "A", "quantity": 3}, {"code": "B", "quantity": 3}, {"code": "C", "quantity": 1},
              {"code": "D", "quantity": 2}]
@@ -17,7 +36,7 @@ def main():
     if response_1 == "Yes":
         shopping_cart = {'A': 0, 'B': 0, 'C': 0, 'D': 0}
         print("Item: A, Price: £50, Special Price:3 for £140")
-        print("Item: B, Price: £35, Special Price:3 for £140")
+        print("Item: B, Price: £35, Special Price:2 for £60")
         print("Item: C, Price: £25")
         print("Item: D, Price: £12")
         while not finished:
@@ -46,9 +65,10 @@ def main():
 
         print(shopping_cart)
 
-    # Pre-selected data is used to compute the subtotal
+    # Testing data
     elif response_1 == "No":
-        print("Using pre-selected data source")
+        print("Testing")
+        print(calculator(Test_code))
 
 
 main()
