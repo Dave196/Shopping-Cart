@@ -3,7 +3,9 @@ from Cart import Cart
 
 def main():
     print("Create own shopping cart (CREATE) or test current data source (TEST)? ")
-    response_1 = input("-> ")
+    response_1 = ""
+    while (response_1 != "CREATE") and (response_1 != "TEST"):
+        response_1 = input("-> ")
 
     # User is able to select their own shopping cart
     if response_1 == "CREATE":
@@ -11,6 +13,7 @@ def main():
         current_basket = Cart()
         shopping_cart = {'A': 0, 'B': 0, 'C': 0, 'D': 0}
 
+        # Manually update the catalog if there price changes
         print("Item: A, Price: £50, Special Price: 3 for £140")
         print("Item: B, Price: £35, Special Price: 2 for £60")
         print("Item: C, Price: £25")
@@ -20,7 +23,7 @@ def main():
             print("Select an item to add to the basket. (A/B/C/D)")
             item = input("-> ")
             # Error check for item input
-            if item not in shopping_cart.keys():
+            if item not in ['A', 'B', 'C', 'D']:
                 print("---Need to enter a valid item (A/B/C/D)---")
                 continue
             # Enter the units for that item
@@ -33,20 +36,26 @@ def main():
 
             # Adding an item
             print("Add another item? (YES/NO)")
-            response_2 = input("-> ")
+            response_2 = ""
+            while (response_2 != "YES") and (response_2 != "NO"):
+                response_2 = input("-> ")
 
             if response_2 == "NO":
                 print("Would you like to edit your basket? (YES/NO)")
                 for item in current_basket.basket:
-                    print("Item: [{}] Quantity: [{}]".format(item["code"], item["quantity"]))
-                response_3 = input("->")
+                    print("Item: [{}] Unit Price: [£{}] Quantity: [{}] ".format(item["code"],
+                                                                                current_basket.pricing[item["code"]][
+                                                                                   "unitPrice"], item["quantity"]))
+                response_3 = ""
+                while (response_3 != "YES") and (response_3 != "NO"):
+                    response_3 = input("->")
 
                 if response_3 == "YES":
                     edit_loop = True
                     while edit_loop:
                         print("Item to edit or add? (A/B/C/D)")
                         item_to_edit = input("->")
-                        print("The new quantity")
+                        print("The new quantity?")
 
                         try:
                             new_quantity = int(input("->"))
@@ -57,10 +66,14 @@ def main():
                         current_basket.edit_basket(item_to_edit, new_quantity)
 
                         for item in current_basket.basket:
-                            print("Item: [{}] Quantity: [{}]".format(item["code"], item["quantity"]))
+                            print("Item: [{}] Unit Price: [£{}] Quantity: [{}] ".format(item["code"], current_basket.
+                                                                                  pricing[item["code"]]
+                                                                                  ["unitPrice"], item["quantity"]))
 
                         print("Would you like to edit another item (YES/NO)")
-                        response_4 = input("->")
+                        response_4 = ""
+                        while (response_4 != "YES") and (response_4 != "NO"):
+                            response_4 = input("->")
 
                         if response_4 == "YES":
                             continue
@@ -70,7 +83,6 @@ def main():
                     finished = True
                 else:
                     finished = True
-
             else:
                 continue
 

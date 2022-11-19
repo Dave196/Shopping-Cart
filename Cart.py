@@ -34,7 +34,6 @@ class Cart:
             if quantity > 0:
                 self.basket.append({"code": code, "quantity": quantity})
 
-
     def calculate_subtotal(self):
         if self.basket:
             sub_total = 0
@@ -67,6 +66,6 @@ class Cart:
             return final_output, sub_total
 
         else:
-            return "Basket is empty"
+            return "Basket is empty!", "Basket is empty!"
 
 
