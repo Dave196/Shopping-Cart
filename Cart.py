@@ -1,4 +1,4 @@
-class Cart():
+class Cart:
     # private members of the Cart class
     pricing = {'A': {"unitPrice": 50, "specialPrice": True, "specialAmount": 3},
                'B': {"unitPrice": 35, "specialPrice": True, "specialAmount": 2},
@@ -16,19 +16,24 @@ class Cart():
         self.basket = basket
 
     def edit_basket(self, code, quantity):
+        item_present = False
+
         for item in self.basket:
-            # Boolean check for if the quantity is set to 0
+            if item["code"] == code:
+                item_present = True
+
+        if item_present:
+            for item in self.basket:
+                if item["code"] == code:
+                    if quantity > 0:
+                        item["quantity"] = quantity
+                    else:
+                        self.basket.remove(item)
+            pass
+        else:
             if quantity > 0:
-                # if the code is present in the basket edit the quantity
-                if item["code"] == code:
-                    item["quantity"] = quantity
-                # If the code is not present add it to the basket
-                else:
-                    self.basket.append({"code": code, "quantity": quantity})
-            # Remove the item from the basket if present
-            else:
-                if item["code"] == code:
-                    self.basket.remove(item)
+                self.basket.append({"code": code, "quantity": quantity})
+
 
     def calculate_subtotal(self):
         if self.basket:
@@ -59,7 +64,7 @@ class Cart():
 
             final_output = "\nSUBTOTAL = £{}".format(str(sub_total))
 
-            return final_output
+            return final_output, sub_total
 
         else:
             return "Basket is empty"
