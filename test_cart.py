@@ -1,11 +1,28 @@
 from Cart import Cart
 
 
-def test_to_add_item():
+def test_to_add_item_scenario1():
     cart_test = Cart()
     cart_test.add_item("A", 20)
 
     assert cart_test.basket[0]["code"] == 'A' and cart_test.basket[0]["quantity"] == 20
+
+
+# Combine duplicate items
+def test_to_add_item_scenario2():
+    cart_test = Cart()
+    cart_test.add_item("A", 20)
+    cart_test.add_item("A", 20)
+
+    assert len(cart_test.basket) == 1
+
+
+# Ignore items with a quantity set to 0
+def test_to_add_item_scenario3():
+    cart_test = Cart()
+    cart_test.add_item("A", 0)
+
+    assert len(cart_test.basket) == 0
 
 
 def test_to_add_entire_basket():
@@ -48,9 +65,9 @@ def test_to_edit_a_basket_scenario3():
 # Testing the output message when an empty basket is ran during the CLI
 def test_for_subtotal_calculation_scenario1():
     cart_test = Cart()
-    output = cart_test.calculate_subtotal()
+    output, subtotal = cart_test.calculate_subtotal()
 
-    assert output == "Basket is empty"
+    assert output == "Basket is empty!"
 
 
 # Testing the subtotal output when manually entering an items with a quantity of 0
