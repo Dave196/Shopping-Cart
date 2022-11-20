@@ -31,7 +31,7 @@ with a subtotal.
 Main.py, Cart.py and optionally test_cart.py should be downloaded and placed in the same directory.
 
 ## Testing
-Unit testing was conducted using the pytest framework. The tests were coded in test_cart.py. The main focus of the testing was to ensure the methods 
-in the Cart.py class worked with a range of scenarios.
+Unit testing was conducted using the pytest framework. The tests were coded in test_cart.py. The main focus of these tests was to ensure that the methods 
+in the Cart.py class worked under a range of scenarios.
 
 ![This is an image](test.png)
