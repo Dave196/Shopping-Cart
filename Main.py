@@ -32,7 +32,11 @@ def main():
 
             # integer validation
             try:
-                current_basket.add_item(item, int(input("-> ")))
+                quantity = int(input("-> "))
+                if quantity < 0:
+                    print("---Must enter a positive number!---")
+                    continue
+                current_basket.add_item(item, quantity)
             except ValueError as ve:
                 print("---Must enter a positive number!---")
                 continue
@@ -69,7 +73,10 @@ def main():
                         # Select the amount
                         print("The new quantity?")
                         try:
-                            new_quantity = int(input("->"))
+                            new_quantity = int(input("-> "))
+                            if new_quantity < 0:
+                                print("---Must enter a positive number!---")
+                                continue
                         except ValueError as ve:
                             print("---Must enter a positive number!---")
                             continue
