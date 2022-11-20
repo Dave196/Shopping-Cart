@@ -25,7 +25,7 @@ with a subtotal.
 
 ## Requirements
 ##### installs
-* Python 3.9+ should be downlaoded and used either in an idle of choice or a python shell. see the link for installation https://www.python.org/downloads/
+* Python 3.9+ should be downlaoded and used either in an IDE of choice or a python shell. see the link for installation https://www.python.org/downloads/
 * (Optional) Install pytest to perform your own unit testing. Command line install pip install -U pytest
 ##### Files to download
 Main.py, Cart.py and optionally test_cart.py should be downloaded and placed in the same directory.
