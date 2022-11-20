@@ -34,4 +34,4 @@ Main.py, Cart.py and optionally test_cart.py should be downloaded and placed in 
 Unit testing was conducted using the pytest framework. The tests were coded in test_cart.py. The main focus of the testing was to ensure the methods 
 in the Cart.py class worked with a range of scenarios.
 
-![This is an image](https://myoctocat.com/assets/images/base-octocat.svg)
+![This is an image](test.png)
