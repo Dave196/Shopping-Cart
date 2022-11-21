@@ -12,13 +12,13 @@ B          | £35        | 2 for £60
 C          | £25        |
 D          | £12        |
 
-##### Data source
+##### Data source example
 `[{"code":"A","quantity":3},{"code":"B","quantity":3},{"code":"C","quantity":1},{"code":"D","quantity":2}]`
 
-##### CLI
+##### CLI (Command line interface)
 The CLI is mainly split into two paths. The first path is used for quick testing. In the testing path, a user can recieve an output from the pre-set data source implemented at the bottom of the main.py script.
 
-The secound path in the CLI allows users to create their own cart. By following the various outputs and inputs, users could add and edit items in the cart to their liking. There is range of validation checks to help ensure there are no crashes. After editing, a cart summary is presented with a subtotal in the checkout.
+The secound path in the CLI allows users to create their own cart. By following the various outputs and inputs, users could add and edit items in the cart to their liking. There is a range of validation checks to help ensure there are no crashes. After editing, a cart summary is presented with a subtotal in the checkout.
 
 ## Requirements
 ##### installs
